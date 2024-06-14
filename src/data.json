@@ -1,0 +1,5 @@
+[
+    {"data": "Person 1", "second" : "Person 2"},
+    {"data": "another", "second" : "Person 3"},
+    {"data": "Person 1", "second" : "Person 4"}
+]

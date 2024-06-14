@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Asynchronous code</h1>
+    <button id="load">Load data</button>
+    <script>
+      function odd() {
+        let button = document.querySelector("#load");
+        button.addEventListener("click", () => {
+          return new Promise((resolve, reject) => {
+            resolve("resolved");
+          })
+            .then((value) => {
+              console.log(value);
+              document.querySelector("h1").textContent = "Promise resolved";
+            })
+            .catch((err) => {
+              console.log("rejected", err);
+            });
+        });
+      }
+      odd();
+      fetch("https://jsonplaceholder.typicode.com/photos/2")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log('resolved', data);
+          let img = document.createElement('img')
+          img.src = "src/image.png";
+          document.querySelector('body').appendChild(img)
+        })
+        .catch((err) => {
+          console.log("rejected", err);
+        });
+    </script>
+  </body>
+</html>
